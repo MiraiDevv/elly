@@ -6,27 +6,27 @@ const CustomerCarousel: React.FC = () => {
   const clients = [
     { 
       name: 'Otsuka', 
-      image: '/elly-site/clients/otsuka.jpg',
+      image: '/_/clients/otsuka.jpg',
       youtube: 'https://www.youtube.com/@OtsukaXD'
     },
     { 
       name: 'F0rsaken', 
-      image: '/elly-site/clients/f0rsaken.jpg',
+      image: '/_/clients/f0rsaken.jpg',
       youtube: 'https://www.youtube.com/@f0rsaken'
     },
     { 
       name: 'Nuuhfps', 
-      image: '/elly-site/clients/nuuhfps.jpg',
+      image: '/_/clients/nuuhfps.jpg',
       youtube: 'https://www.youtube.com/@Nuuhfps'
     },
     { 
       name: 'AAABW', 
-      image: '/elly-site/clients/aaabw.jpg',
+      image: '/_/clients/aaabw.jpg',
       youtube: 'https://www.youtube.com/@aaabw_'
     },
     { 
       name: 'Brunowski', 
-      image: '/elly-site/clients/iBrunowski.jpg',
+      image: '/_/clients/iBrunowski.jpg',
       youtube: 'https://www.youtube.com/@ibrunowskivalorant'
     }
   ];
