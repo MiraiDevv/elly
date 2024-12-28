@@ -2,8 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: '/_',
-  assetPrefix: '/_/',
   images: {
     remotePatterns: [
       {
@@ -12,9 +10,7 @@ const nextConfig = {
         pathname: '/vi/**'
       }
     ],
-    unoptimized: true,
-    loader: 'custom',
-    loaderFile: './src/image-loader.js'
+    unoptimized: true
   }
 }
 
