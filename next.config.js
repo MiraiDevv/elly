@@ -1,10 +1,17 @@
-const withNextIntl = require('next-intl/plugin')(
-  './src/i18n/request.ts'
-);
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your existing config
-};
+  reactStrictMode: true,
+  output: 'export',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        pathname: '/vi/**'
+      }
+    ],
+    unoptimized: true
+  }
+}
 
-module.exports = withNextIntl(nextConfig); 
+module.exports = nextConfig 

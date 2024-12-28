@@ -1,62 +1,47 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Play, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 interface HeroVideoPlayerProps {
   videoId: string;
 }
 
 const HeroVideoPlayer: React.FC<HeroVideoPlayerProps> = ({ videoId }) => {
-  const [isLoading, setIsLoading] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handlePlay = () => {
-    setIsLoading(true);
-    setIsPlaying(true);
-  };
-
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-2xl">
+    <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
       {!isPlaying ? (
-        <div className="relative group">
-          {/* Thumbnail with gradient overlay */}
-          <img
+        <>
+          <Image
             src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
             alt="Video thumbnail"
-            className="w-full h-full object-cover rounded-2xl transform transition-transform duration-300 group-hover:scale-105"
+            fill
+            className="object-cover"
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-2xl"></div>
-          
-          {/* Play button */}
-          <button
-            onClick={handlePlay}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <div className="relative group/btn">
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#F56565] via-[#6B46C1] to-[#F56565] rounded-full blur opacity-25 group-hover/btn:opacity-75 transition-opacity duration-300"></div>
-              <div className="relative bg-white/10 backdrop-blur-sm border border-white/20 w-16 h-16 rounded-full flex items-center justify-center transition-all duration-300 group-hover/btn:scale-110">
-                <Play className="w-8 h-8 text-white ml-1" fill="currentColor" />
-              </div>
-            </div>
-          </button>
-        </div>
+          <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+            <button
+              onClick={() => setIsPlaying(true)}
+              className="bg-[#F56565] text-white p-4 rounded-full hover:bg-[#E53E3E] transition-all duration-300 hover:scale-110"
+              aria-label="Play video"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </button>
+          </div>
+        </>
       ) : (
-        <div className="relative w-full h-full rounded-2xl overflow-hidden">
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-[#1A202C] rounded-2xl">
-              <Loader2 className="w-8 h-8 text-[#F56565] animate-spin" />
-            </div>
-          )}
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0`}
-            title="Hero video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full rounded-2xl"
-            onLoad={() => setIsLoading(false)}
-          />
-        </div>
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="absolute top-0 left-0 w-full h-full border-0"
+        />
       )}
     </div>
   );

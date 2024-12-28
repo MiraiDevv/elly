@@ -1,78 +1,68 @@
 'use client';
 
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import { useTranslations } from 'next-intl';
-
-import 'swiper/css';
-import 'swiper/css/autoplay';
-
-const placeholderImages = Array(10).fill(null).map((_, index) => ({
-  id: index + 1,
-  src: `/assets/placeholder-${index + 1}.jpg`,
-  alt: `Customer ${index + 1}`,
-}));
+import Image from 'next/image';
 
 const CustomerCarousel: React.FC = () => {
-  const t = useTranslations('clients');
+  const clients = [
+    { 
+      name: 'Otsuka', 
+      image: '/clients/otsuka.jpg',
+      youtube: 'https://www.youtube.com/@OtsukaXD'
+    },
+    { 
+      name: 'F0rsaken', 
+      image: '/clients/f0rsaken.jpg',
+      youtube: 'https://www.youtube.com/@f0rsaken'
+    },
+    { 
+      name: 'Nuuhfps', 
+      image: '/clients/nuuhfps.jpg',
+      youtube: 'https://www.youtube.com/@Nuuhfps'
+    },
+    { 
+      name: 'AAABW', 
+      image: '/clients/aaabw.jpg',
+      youtube: 'https://www.youtube.com/@aaabw_'
+    },
+    { 
+      name: 'Brunowski', 
+      image: '/clients/iBrunowski.jpg',
+      youtube: 'https://www.youtube.com/@ibrunowskivalorant'
+    }
+  ];
 
   return (
-    <div className="w-full bg-[#6B46C1]/5 dark:bg-[#1A202C] py-16 border-t border-[#6B46C1]/20 dark:border-[#F56565]/20">
-      <h2 className="text-center text-[#6B46C1] dark:text-[#F56565] text-2xl font-bold mb-12">
-        {t('title')}
-      </h2>
-      <Swiper
-        modules={[Autoplay]}
-        spaceBetween={20}
-        slidesPerView={1.5}
-        loop={true}
-        autoplay={{
-          delay: 2000,
-          disableOnInteraction: false,
-        }}
-        breakpoints={{
-          640: {
-            slidesPerView: 2.5,
-          },
-          768: {
-            slidesPerView: 3.5,
-          },
-          1024: {
-            slidesPerView: 4.5,
-          },
-          1280: {
-            slidesPerView: 5,
-          },
-        }}
-        className="customer-carousel px-4"
-      >
-        {placeholderImages.map((image) => (
-          <SwiperSlide key={image.id}>
-            <div className="aspect-square bg-white dark:bg-black/40 rounded-lg overflow-hidden max-w-[150px] mx-auto border border-[#6B46C1]/20 dark:border-[#F56565]/20">
-              <div className="w-full h-full flex items-center justify-center">
-                <svg
-                  className="w-8 h-8 text-[#6B46C1] dark:text-[#F56565]"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
+    <div className="w-full bg-gray-50 dark:bg-[#111827] py-24 border-t border-gray-100 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-4">
+        <h2 className="text-4xl font-bold text-center text-[#F56565] mb-4">
+          CLIENTES QUE JÁ ATENDI
+        </h2>
+        <p className="text-xl text-[#2D3748] dark:text-gray-300 text-center mb-16 max-w-4xl mx-auto">
+          VOU TE ENSINAR O MESMO PROCESSO QUE UTILIZO PARA EDITAR PARA OS MAIORES INFLUENCIADORES DA INTERNET!
+        </p>
+        
+        <div className="flex justify-center items-center gap-8">
+          {clients.map((client, index) => (
+            <a 
+              key={index} 
+              href={client.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative transition-transform hover:scale-105 duration-300"
+            >
+              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#F56565]/20 group-hover:border-[#F56565] transition-colors duration-300">
+                <Image
+                  src={client.image}
+                  alt={client.name}
+                  width={96}
+                  height={96}
+                  className="object-cover"
+                />
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className="container mx-auto px-4">
-        <div className="text-center text-[#2D3748] dark:text-[#F56565] text-lg mt-12 max-w-3xl mx-auto opacity-90">
-          {t('subtitle')}
+              <p className="text-[#2D3748] dark:text-gray-300 text-center mt-2 text-sm group-hover:text-[#F56565] transition-colors duration-300">{client.name}</p>
+            </a>
+          ))}
         </div>
       </div>
     </div>

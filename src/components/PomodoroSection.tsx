@@ -1,37 +1,31 @@
 'use client';
 
 import React from 'react';
-import { useTranslations } from 'next-intl';
 
 const PomodoroSection: React.FC = () => {
-  const t = useTranslations();
-  const valueT = useTranslations('value');
-  const trainingT = useTranslations('training');
-  const benefitsT = useTranslations('benefits');
-
   return (
     <div className="w-full">
       {/* First Section - Acceleration Message */}
       <div className="w-full bg-white dark:bg-[#1A202C] rounded-3xl p-12 text-center shadow-lg border border-gray-100 dark:border-transparent">
         <h2 className="text-4xl font-bold mb-4">
-          <span className="text-[#F56565]">{valueT('title.part1')}</span>{' '}
-          <span className="text-[#6B46C1]">{valueT('title.part2')} {valueT('title.part3')} {valueT('title.part4')}</span>{' '}
-          <span className="text-[#F56565]">{valueT('title.part5')}</span>
+          <span className="text-[#F56565]">Nós aceleramos</span>{' '}
+          <span className="text-[#6B46C1]">o aprendizado E você acelera</span>{' '}
+          <span className="text-[#F56565]">seus resultados.</span>
         </h2>
         <p className="text-[#2D3748] dark:text-gray-300 mb-8 max-w-3xl mx-auto">
-          {valueT('description')}
+          Junte-se ao nosso clube da EditTiming e descubra como fazer seu conteúdo brilhar. Aprenda o futuro da edição, construa sua marca pessoal e fique à frente das últimas tendências em edição e criação de conteúdo.
         </p>
         <button className="bg-[#F56565] text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-[#E53E3E] transition-colors duration-300">
-          {valueT('cta')}
+          Comprar agora
         </button>
       </div>
 
       {/* Second Section - "Is it for you?" */}
       <div className="mt-20 mb-16 text-center">
         <h2 className="text-4xl font-bold">
-          <span className="text-[#F56565]">{trainingT('title.part1')}</span>{' '}
-          <span className="text-[#F56565]">{trainingT('title.part2')}</span>{' '}
-          <span className="text-[#6B46C1]">{trainingT('title.part3')}</span>
+          <span className="text-[#F56565]">Este treinamento é</span>{' '}
+          <span className="text-[#F56565]">para você</span>{' '}
+          <span className="text-[#6B46C1]">?</span>
         </h2>
       </div>
 
@@ -41,12 +35,12 @@ const PomodoroSection: React.FC = () => {
         <div className="bg-white dark:bg-[#1A202C] rounded-3xl p-8 flex items-center justify-between shadow-lg border border-gray-100 dark:border-transparent">
           <div className="flex-1 pr-8">
             <h3 className="text-2xl mb-4">
-              <span className="text-[#F56565]">{trainingT('levels.beginner.condition')}</span>{' '}
-              <span className="text-[#F56565]">{trainingT('levels.beginner.highlight')}</span>{' '}
-              <span className="text-[#6B46C1]">{trainingT('levels.beginner.emphasis')}</span>.
+              <span className="text-[#F56565]">Se você é iniciante,</span>{' '}
+              <span className="text-[#F56565]">este treinamento é</span>{' '}
+              <span className="text-[#6B46C1]">ideal</span>.
             </h3>
             <p className="text-[#2D3748] dark:text-gray-300">
-              {trainingT('levels.beginner.description')}
+              Aqui, você aprenderá os fundamentos do método Pomodoro, começando com sessões básicas de 25 minutos e descobrindo como maximizar sua produtividade desde o primeiro dia.
             </p>
           </div>
           <div className="flex-1">
@@ -61,12 +55,12 @@ const PomodoroSection: React.FC = () => {
           </div>
           <div className="flex-1 pl-8">
             <h3 className="text-2xl mb-4">
-              <span className="text-[#F56565]">{trainingT('levels.intermediate.condition')}</span>{' '}
-              <span className="text-[#F56565]">{trainingT('levels.intermediate.highlight')}</span>{' '}
-              <span className="text-[#6B46C1]">{trainingT('levels.intermediate.emphasis')}</span>.
+              <span className="text-[#F56565]">Se você já tem experiência,</span>{' '}
+              <span className="text-[#F56565]">este treinamento é o seu próximo</span>{' '}
+              <span className="text-[#6B46C1]">passo</span>.
             </h3>
             <p className="text-[#2D3748] dark:text-gray-300">
-              {trainingT('levels.intermediate.description')}
+              Aprenda técnicas avançadas do Pomodoro, como ajustar intervalos, gerenciar interrupções e utilizar ferramentas digitais para potencializar sua produtividade.
             </p>
           </div>
         </div>
@@ -75,12 +69,12 @@ const PomodoroSection: React.FC = () => {
         <div className="bg-white dark:bg-[#1A202C] rounded-3xl p-8 flex items-center justify-between shadow-lg border border-gray-100 dark:border-transparent">
           <div className="flex-1 pr-8">
             <h3 className="text-2xl mb-4">
-              <span className="text-[#F56565]">{trainingT('levels.advanced.condition')}</span>{' '}
-              <span className="text-[#F56565]">{trainingT('levels.advanced.highlight')}</span>{' '}
-              <span className="text-[#6B46C1]">{trainingT('levels.advanced.emphasis')}</span>.
+              <span className="text-[#F56565]">Para quem busca se superar,</span>{' '}
+              <span className="text-[#F56565]">este treinamento é o</span>{' '}
+              <span className="text-[#6B46C1]">desafio final</span>.
             </h3>
             <p className="text-[#2D3748] dark:text-gray-300">
-              {trainingT('levels.advanced.description')}
+              Domine estratégias avançadas de gestão de tempo, combine o Pomodoro com outras técnicas de produtividade e desenvolva seu próprio sistema personalizado.
             </p>
           </div>
           <div className="flex-1">
@@ -92,18 +86,18 @@ const PomodoroSection: React.FC = () => {
       {/* Fourth Section - Benefits Comparison */}
       <div className="mt-20 mb-16 text-center">
         <h2 className="text-4xl font-bold mb-12">
-          <span className="text-[#F56565]">{benefitsT('title.part1')}</span>{' '}
-          <span className="text-[#F56565]">{benefitsT('title.part2')}</span>{' '}
-          <span className="text-[#6B46C1]">{benefitsT('title.part3')}</span>
+          <span className="text-[#F56565]">Todos os benefícios do</span>{' '}
+          <span className="text-[#F56565]">método</span>{' '}
+          <span className="text-[#6B46C1]">pomodoro</span>
         </h2>
         
         <div className="flex gap-8 max-w-6xl mx-auto">
           {/* With Method */}
           <div className="flex-1 bg-[#6B46C1]/[0.02] dark:bg-[#1A202C] rounded-3xl p-8 text-left shadow-lg border border-[#6B46C1]/20 dark:border-transparent">
             <h3 className="text-2xl mb-6">
-              <span className="text-[#6B46C1]">{benefitsT('withMethod.title.part1')}</span>{' '}
-              <span className="text-[#6B46C1]">{benefitsT('withMethod.title.part2')}</span>
-              <span className="text-[#2D3748] dark:text-white">{benefitsT('withMethod.title.part3')}</span>
+              <span className="text-[#6B46C1]">Com o método</span>{' '}
+              <span className="text-[#6B46C1]">Pomodoro</span>
+              <span className="text-[#2D3748] dark:text-white">, você:</span>
             </h3>
             <ul className="space-y-6">
               {/* Time Management */}
@@ -112,8 +106,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <div>
-                  <span className="text-[#6B46C1] font-medium">{benefitsT('withMethod.items.time.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withMethod.items.time.description')}</span>
+                  <span className="text-[#6B46C1] font-medium">Otimiza seu tempo:</span>
+                  <span className="text-[#6B46C1]/60"> Foco intenso por 25 minutos e pausas estratégicas</span>
                 </div>
               </li>
               {/* Focus */}
@@ -122,8 +116,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <div>
-                  <span className="text-[#6B46C1] font-medium">{benefitsT('withMethod.items.focus.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withMethod.items.focus.description')}</span>
+                  <span className="text-[#6B46C1] font-medium">Aumenta o foco:</span>
+                  <span className="text-[#6B46C1]/60"> Elimina distrações e mantém alta produtividade</span>
                 </div>
               </li>
               {/* Mental Fatigue */}
@@ -132,8 +126,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <div>
-                  <span className="text-[#6B46C1] font-medium">{benefitsT('withMethod.items.mentalFatigue.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withMethod.items.mentalFatigue.description')}</span>
+                  <span className="text-[#6B46C1] font-medium">Reduz a fadiga mental:</span>
+                  <span className="text-[#6B46C1]/60"> Pausas regulares mantêm sua mente fresca e energizada</span>
                 </div>
               </li>
               {/* Quality */}
@@ -142,8 +136,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <div>
-                  <span className="text-[#6B46C1] font-medium">{benefitsT('withMethod.items.quality.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withMethod.items.quality.description')}</span>
+                  <span className="text-[#6B46C1] font-medium">Melhora a qualidade:</span>
+                  <span className="text-[#6B46C1]/60"> Trabalho focado leva a melhores resultados</span>
                 </div>
               </li>
               {/* Discipline */}
@@ -152,8 +146,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                 </svg>
                 <div>
-                  <span className="text-[#6B46C1] font-medium">{benefitsT('withMethod.items.discipline.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withMethod.items.discipline.description')}</span>
+                  <span className="text-[#6B46C1] font-medium">Desenvolve disciplina:</span>
+                  <span className="text-[#6B46C1]/60"> Cria hábitos produtivos e consistentes</span>
                 </div>
               </li>
             </ul>
@@ -162,9 +156,9 @@ const PomodoroSection: React.FC = () => {
           {/* Without Method */}
           <div className="flex-1 bg-[#6B46C1]/[0.02] dark:bg-[#1A202C] rounded-3xl p-8 text-left shadow-lg border border-[#6B46C1]/20 dark:border-transparent">
             <h3 className="text-2xl mb-6">
-              <span className="text-[#F56565]">{benefitsT('withoutMethod.title.part1')}</span>{' '}
-              <span className="text-[#F56565]">{benefitsT('withoutMethod.title.part2')}</span>
-              <span className="text-[#2D3748] dark:text-white">{benefitsT('withoutMethod.title.part3')}</span>
+              <span className="text-[#F56565]">Sem o método</span>{' '}
+              <span className="text-[#F56565]">Pomodoro</span>
+              <span className="text-[#2D3748] dark:text-white">, você:</span>
             </h3>
             <ul className="space-y-6">
               {/* Time Waste */}
@@ -173,8 +167,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <div>
-                  <span className="text-[#F56565] font-medium">{benefitsT('withoutMethod.items.time.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withoutMethod.items.time.description')}</span>
+                  <span className="text-[#F56565] font-medium">Perde tempo:</span>
+                  <span className="text-[#6B46C1]/60"> Trabalha sem estrutura e desperdiça energia</span>
                 </div>
               </li>
               {/* Distractions */}
@@ -183,8 +177,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <div>
-                  <span className="text-[#F56565] font-medium">{benefitsT('withoutMethod.items.distractions.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withoutMethod.items.distractions.description')}</span>
+                  <span className="text-[#F56565] font-medium">Sofre com distrações:</span>
+                  <span className="text-[#6B46C1]/60"> Interrupções constantes quebram seu fluxo</span>
                 </div>
               </li>
               {/* Exhaustion */}
@@ -193,8 +187,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <div>
-                  <span className="text-[#F56565] font-medium">{benefitsT('withoutMethod.items.exhaustion.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withoutMethod.items.exhaustion.description')}</span>
+                  <span className="text-[#F56565] font-medium">Esgota-se rapidamente:</span>
+                  <span className="text-[#6B46C1]/60"> Trabalho sem pausas leva à exaustão</span>
                 </div>
               </li>
               {/* Quality */}
@@ -203,8 +197,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <div>
-                  <span className="text-[#F56565] font-medium">{benefitsT('withoutMethod.items.quality.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withoutMethod.items.quality.description')}</span>
+                  <span className="text-[#F56565] font-medium">Entrega trabalhos medianos:</span>
+                  <span className="text-[#6B46C1]/60"> Falta de foco compromete a qualidade</span>
                 </div>
               </li>
               {/* Procrastination */}
@@ -213,8 +207,8 @@ const PomodoroSection: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
                 <div>
-                  <span className="text-[#F56565] font-medium">{benefitsT('withoutMethod.items.procrastination.title')}</span>
-                  <span className="text-[#6B46C1]/60"> {benefitsT('withoutMethod.items.procrastination.description')}</span>
+                  <span className="text-[#F56565] font-medium">Procrastina mais:</span>
+                  <span className="text-[#6B46C1]/60"> Sem estrutura, adia tarefas importantes</span>
                 </div>
               </li>
             </ul>
@@ -222,7 +216,7 @@ const PomodoroSection: React.FC = () => {
         </div>
 
         <button className="mt-12 bg-[#F56565] text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-[#E53E3E] transition-colors duration-300">
-          {valueT('cta')}
+          Comprar agora
         </button>
       </div>
     </div>
