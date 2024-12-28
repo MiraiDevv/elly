@@ -58,6 +58,7 @@ const CustomerCarousel: React.FC = () => {
                   width={96}
                   height={96}
                   className="object-cover"
+                  unoptimized
                 />
               </div>
               <p className="text-[#2D3748] dark:text-gray-300 text-center mt-2 text-sm group-hover:text-[#F56565] transition-colors duration-300">{client.name}</p>
