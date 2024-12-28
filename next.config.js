@@ -2,6 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  basePath: '/_',
+  assetPrefix: '/_/',
   images: {
     remotePatterns: [
       {
