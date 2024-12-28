@@ -2,6 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
+  basePath: '/elly-site',
+  assetPrefix: '/elly-site/',
   images: {
     remotePatterns: [
       {
