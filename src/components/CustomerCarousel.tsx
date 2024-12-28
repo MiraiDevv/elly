@@ -7,27 +7,27 @@ const CustomerCarousel: React.FC = () => {
   const clients = [
     { 
       name: 'Otsuka', 
-      image: '/clients/otsuka.jpg',
+      image: 'https://yt3.googleusercontent.com/8t7GypfzGmty8Ba7negVgvOw5rwzbX_V-M77P0uA1KtWUolLs9dxvWwwawnwKMKUJ0jE7W85_w=s160-c-k-c0x00ffffff-no-rj',
       youtube: 'https://www.youtube.com/@OtsukaXD'
     },
     { 
       name: 'F0rsaken', 
-      image: '/clients/f0rsaken.jpg',
+      image: 'https://yt3.googleusercontent.com/mNfy7C3vVHVz0qNg8tPPKW0t-bgg9fekgZJJ30pguXFNPiI-XsKlFkcyuHdtuhjT78QE9RKMLw=s160-c-k-c0x00ffffff-no-rj',
       youtube: 'https://www.youtube.com/@f0rsaken'
     },
     { 
       name: 'Nuuhfps', 
-      image: '/clients/nuuhfps.jpg',
+      image: 'https://yt3.googleusercontent.com/y4fZL4z4tKjSYH_VcYUdVpQZWvi3xg5zR9ugCjlVK_4rDBNosr2pW-ODtdFPY-u_Fsx691vshlI=s160-c-k-c0x00ffffff-no-rj',
       youtube: 'https://www.youtube.com/@Nuuhfps'
     },
     { 
       name: 'AAABW', 
-      image: '/clients/aaabw.jpg',
+      image: 'https://yt3.googleusercontent.com/jgH-Sqx2ZdqiJP1Bf1u1u-RpIhRmxqtTmig_oBFFTT8PTWQrtz0LKRnH9mMZVi03j2Fa-LB_7g=s160-c-k-c0x00ffffff-no-rj',
       youtube: 'https://www.youtube.com/@aaabw_'
     },
     { 
       name: 'Brunowski', 
-      image: '/clients/iBrunowski.jpg',
+      image: 'https://yt3.googleusercontent.com/DN4qXrDa74eJP--U1q1Pg-bOAt22TfLeFGMTzvrHmDJyqy3j06xOEPwGRsOaeJP3sXK6Uqcw8w=s160-c-k-c0x00ffffff-no-rj',
       youtube: 'https://www.youtube.com/@ibrunowskivalorant'
     }
   ];

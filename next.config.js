@@ -21,6 +21,11 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'img.youtube.com',
         pathname: '/vi/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'yt3.googleusercontent.com',
+        pathname: '/**'
       }
     ],
     unoptimized: true
