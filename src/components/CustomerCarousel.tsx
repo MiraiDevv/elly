@@ -1,32 +1,33 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const CustomerCarousel: React.FC = () => {
   const clients = [
     { 
       name: 'Otsuka', 
-      image: './clients/otsuka.jpg',
+      image: '/clients/otsuka.jpg',
       youtube: 'https://www.youtube.com/@OtsukaXD'
     },
     { 
       name: 'F0rsaken', 
-      image: './clients/f0rsaken.jpg',
+      image: '/clients/f0rsaken.jpg',
       youtube: 'https://www.youtube.com/@f0rsaken'
     },
     { 
       name: 'Nuuhfps', 
-      image: './clients/nuuhfps.jpg',
+      image: '/clients/nuuhfps.jpg',
       youtube: 'https://www.youtube.com/@Nuuhfps'
     },
     { 
       name: 'AAABW', 
-      image: './clients/aaabw.jpg',
+      image: '/clients/aaabw.jpg',
       youtube: 'https://www.youtube.com/@aaabw_'
     },
     { 
       name: 'Brunowski', 
-      image: './clients/iBrunowski.jpg',
+      image: '/clients/iBrunowski.jpg',
       youtube: 'https://www.youtube.com/@ibrunowskivalorant'
     }
   ];
@@ -51,10 +52,13 @@ const CustomerCarousel: React.FC = () => {
               className="group relative transition-transform hover:scale-105 duration-300"
             >
               <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#F56565]/20 group-hover:border-[#F56565] transition-colors duration-300">
-                <img
+                <Image
                   src={client.image}
                   alt={client.name}
-                  className="w-full h-full object-cover"
+                  width={96}
+                  height={96}
+                  className="object-cover"
+                  unoptimized
                 />
               </div>
               <p className="text-[#2D3748] dark:text-gray-300 text-center mt-2 text-sm group-hover:text-[#F56565] transition-colors duration-300">{client.name}</p>
