@@ -1,4 +1,4 @@
-export default function myImageLoader({ src, _width, _quality }) {
+export default function myImageLoader({ src }) {
   if (src.startsWith('http')) {
     return src
   }
