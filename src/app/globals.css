@@ -2,78 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-@layer base {
-  * {
-    @apply box-border;
-  }
-  
-  body {
-    @apply bg-background min-h-screen;
-  }
-  
+@media (prefers-color-scheme: dark) {
   :root {
-    --gradient-background: linear-gradient(135deg, #ffbc37 0%, #00cdff 50%, #ff4cbe 100%);
-    --foreground: 271 81% 46%;
-    --card: 0 0% 100%;
-    --card-foreground: 271 81% 46%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 271 81% 46%;
-    --primary: 271 81% 46%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 271 70% 35%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 271 50% 30%;
-    --muted-foreground: 0 0% 100%;
-    --accent: 271 81% 46%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 271 50% 30%;
-    --input: 271 50% 30%;
-    --ring: 271 81% 46%;
-    --radius: 0.5rem;
-  }
-  .dark {
-    --gradient-background: linear-gradient(135deg, rgba(255, 188, 55, 0.05) 0%, rgba(0, 205, 255, 0.05) 50%, rgba(255, 76, 190, 0.05) 100%);
-    --foreground: 271 81% 90%;
-    --card: 271 15% 17%;
-    --card-foreground: 271 81% 90%;
-    --popover: 271 15% 17%;
-    --popover-foreground: 271 81% 90%;
-    --primary: 271 81% 90%;
-    --primary-foreground: 271 15% 17%;
-    --secondary: 271 70% 80%;
-    --secondary-foreground: 271 15% 17%;
-    --muted: 271 50% 70%;
-    --muted-foreground: 271 15% 17%;
-    --accent: 271 81% 90%;
-    --accent-foreground: 271 15% 17%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 271 50% 70%;
-    --input: 271 50% 70%;
-    --ring: 271 81% 90%;
-    --radius: 0.5rem;
-  }
-  
-  body {
-    background: var(--gradient-background);
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-    cursor: url('/assets/Angry_Shadow.png') 8 8, auto;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  a, button, [role="button"], select, input[type="submit"], input[type="reset"], input[type="button"] {
-    cursor: url('/assets/Smile_Shadow.png') 8 8, pointer !important;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
   }
 }
