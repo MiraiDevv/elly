@@ -52,7 +52,7 @@ const ContactSection: React.FC = () => {
   const contactUrls = {
     Twitter: 'https://twitter.com/ellyvfx',
     Instagram: 'https://instagram.com/ellyminada',
-    Email: 'mailto:contato@elly.com.br',
+    Email: 'mailto:ellypackcontato@gmail.com',
     Discord: '#'
   };
 

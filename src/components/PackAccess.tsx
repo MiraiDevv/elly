@@ -23,8 +23,8 @@ const PackAccess: React.FC = () => {
               
               {/* Price badge */}
               <div className="absolute -top-6 -right-6 bg-[#F56565] text-white px-6 py-3 rounded-full transform rotate-12 shadow-lg">
-                <span className="text-sm font-semibold line-through opacity-75">R$297</span>
-                <span className="text-xl font-bold ml-2">R$197</span>
+                <span className="text-sm font-semibold line-through opacity-75">R$197</span>
+                <span className="text-xl font-bold ml-2">R$50</span>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@ const PackAccess: React.FC = () => {
             {/* Animated discount badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#F56565]/10 rounded-full mb-8 animate-pulse">
               <Sparkles className="w-5 h-5 text-[#F56565]" />
-              <span className="text-[#F56565] font-medium">33% DE DESCONTO</span>
+              <span className="text-[#F56565] font-medium">75% DE DESCONTO</span>
             </div>
 
             <h3 className="text-4xl font-bold text-[#2D3748] dark:text-white mb-6">

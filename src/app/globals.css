@@ -2,16 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  [data-radix-popper-content-wrapper] {
+    @apply z-50;
   }
+
+  [role="menuitem"] {
+    @apply relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors;
+    @apply hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900;
+    @apply dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50;
+    @apply dark:text-gray-100;
+  }
+
+  [role="menuitem"][data-highlighted] {
+    @apply bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50;
+  }
+}
+
+/* Ensure dropdown has solid background */
+[data-radix-popper-content-wrapper] > div {
+  @apply bg-white dark:bg-gray-950;
 }

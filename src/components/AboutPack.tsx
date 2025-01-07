@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 
 const AboutPack: React.FC = () => {
   return (
@@ -8,9 +9,14 @@ const AboutPack: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between gap-16">
           <div className="flex-1">
-            <div className="relative w-full aspect-[4/3] bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-lg shadow-2xl">
-              {/* Placeholder laptop image with gradient effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#6B46C1]/20 to-[#F56565]/20 rounded-lg"></div>
+            <div className="relative w-full aspect-[4/3] rounded-lg shadow-2xl overflow-hidden">
+              <Image
+                src="https://imgur.com/RXjjpf9.png"
+                alt="Pack Preview"
+                fill
+                className="object-cover"
+                unoptimized
+              />
             </div>
           </div>
           <div className="flex-1">

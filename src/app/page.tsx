@@ -10,7 +10,7 @@ export default function Home() {
       <HeroSection
         title="Transforme suas ideias"
         highlightedText="em realidade!"
-        description="Domine o Premiere: edição precisa, timing perfeito e psicologia nos cortes. Aprenda com quem já gerou resultados."
+        description="Economize tempo editando seus vídeos com meu pack de edição completo!"
         buttonText="Comprar agora"
         titleColor="text-[#6B46C1]"
       />

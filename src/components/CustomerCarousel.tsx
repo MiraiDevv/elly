@@ -39,7 +39,7 @@ const CustomerCarousel: React.FC = () => {
           CLIENTES QUE JÁ ATENDI
         </h2>
         <p className="text-xl text-[#2D3748] dark:text-gray-300 text-center mb-16 max-w-4xl mx-auto">
-          VOU TE ENSINAR O MESMO PROCESSO QUE UTILIZO PARA EDITAR PARA OS MAIORES INFLUENCIADORES DA INTERNET!
+          VOU TE ENSINAR O MESMO PROCESSO QUE UTILIZO PARA EDITAR PARA OS MAIORES INFLUENCIADORES DO VALORANT!
         </p>
         
         <div className="flex justify-center items-center gap-8">
