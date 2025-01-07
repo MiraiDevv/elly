@@ -42,15 +42,14 @@ const CustomerCarousel: React.FC = () => {
           VOU TE ENSINAR O MESMO PROCESSO QUE UTILIZO PARA EDITAR PARA OS MAIORES INFLUENCIADORES DO VALORANT!
         </p>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto">
           {clients.map((client, index) => (
             <a 
               key={index} 
               href={client.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative transition-transform hover:scale-105 duration-300 justify-self-center
-                ${index === clients.length - 1 && clients.length % 2 !== 0 ? 'col-span-2 sm:col-span-1' : ''}`}
+              className="group relative transition-transform hover:scale-105 duration-300 flex-[0_1_calc(50%-8px)] sm:flex-[0_1_calc(33.333%-16px)] lg:flex-[0_1_calc(20%-16px)] flex flex-col items-center"
             >
               <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#F56565]/20 group-hover:border-[#F56565] transition-colors duration-300">
                 <Image
