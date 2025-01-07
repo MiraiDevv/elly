@@ -33,35 +33,38 @@ const CustomerCarousel: React.FC = () => {
   ];
 
   return (
-    <div className="w-full bg-gray-50 dark:bg-[#111827] py-24 border-t border-gray-100 dark:border-gray-800">
+    <div className="w-full bg-gray-50 dark:bg-[#111827] py-12 sm:py-24 border-t border-gray-100 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-[#F56565] mb-4">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-[#F56565] mb-2 sm:mb-4">
           CLIENTES QUE JÁ ATENDI
         </h2>
-        <p className="text-xl text-[#2D3748] dark:text-gray-300 text-center mb-16 max-w-4xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-[#2D3748] dark:text-gray-300 text-center mb-8 sm:mb-16 max-w-4xl mx-auto px-4">
           VOU TE ENSINAR O MESMO PROCESSO QUE UTILIZO PARA EDITAR PARA OS MAIORES INFLUENCIADORES DO VALORANT!
         </p>
         
-        <div className="flex justify-center items-center gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
           {clients.map((client, index) => (
             <a 
               key={index} 
               href={client.youtube}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative transition-transform hover:scale-105 duration-300"
+              className={`group relative transition-transform hover:scale-105 duration-300 justify-self-center
+                ${index === clients.length - 1 && clients.length % 2 !== 0 ? 'col-span-2 sm:col-span-1' : ''}`}
             >
-              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-[#F56565]/20 group-hover:border-[#F56565] transition-colors duration-300">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#F56565]/20 group-hover:border-[#F56565] transition-colors duration-300">
                 <Image
                   src={client.image}
                   alt={client.name}
                   width={96}
                   height={96}
-                  className="object-cover"
+                  className="object-cover w-full h-full"
                   unoptimized
                 />
               </div>
-              <p className="text-[#2D3748] dark:text-gray-300 text-center mt-2 text-sm group-hover:text-[#F56565] transition-colors duration-300">{client.name}</p>
+              <p className="text-[#2D3748] dark:text-gray-300 text-center mt-2 text-xs sm:text-sm group-hover:text-[#F56565] transition-colors duration-300">
+                {client.name}
+              </p>
             </a>
           ))}
         </div>
