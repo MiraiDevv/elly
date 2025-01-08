@@ -4,6 +4,7 @@ import Navigation from '@/components/ui/Navigation'
 import { ThemeProvider } from '@/components/theme-provider'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import Link from 'next/link'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             {/* Footer */}
             <Footer />
           </div>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
