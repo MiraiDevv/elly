@@ -1,18 +1,26 @@
 'use client'
 
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 import Image from 'next/image'
 
 interface MaintenanceContextType {
   isInMaintenanceMode: boolean
 }
 
-// Simple maintenance mode check
+// Simple maintenance mode check with debug logging
 const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true'
+if (typeof window !== 'undefined') {
+  console.log('Maintenance Mode Value:', process.env.NEXT_PUBLIC_MAINTENANCE_MODE)
+  console.log('Is in Maintenance Mode?', MAINTENANCE_MODE)
+}
 
 const MaintenanceContext = createContext<MaintenanceContextType>({ isInMaintenanceMode: MAINTENANCE_MODE })
 
 export function MaintenanceProvider({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    console.log('Current Maintenance Status:', MAINTENANCE_MODE)
+  }, [])
+
   return (
     <MaintenanceContext.Provider value={{ isInMaintenanceMode: MAINTENANCE_MODE }}>
       {MAINTENANCE_MODE ? (
