@@ -1,32 +1,44 @@
 'use client'
 
-import { createContext, useContext, useEffect } from 'react'
+import { createContext, useContext, useState, useEffect } from 'react'
 import Image from 'next/image'
-import getConfig from 'next/config'
 
 interface MaintenanceContextType {
   isInMaintenanceMode: boolean
 }
 
-// Get runtime config
-const { publicRuntimeConfig } = getConfig() || {}
-const MAINTENANCE_MODE = publicRuntimeConfig?.MAINTENANCE_MODE === 'true'
-
-if (typeof window !== 'undefined') {
-  console.log('Runtime Config:', publicRuntimeConfig)
-  console.log('Is in Maintenance Mode?', MAINTENANCE_MODE)
-}
-
-const MaintenanceContext = createContext<MaintenanceContextType>({ isInMaintenanceMode: MAINTENANCE_MODE })
+const MaintenanceContext = createContext<MaintenanceContextType>({ isInMaintenanceMode: false })
 
 export function MaintenanceProvider({ children }: { children: React.ReactNode }) {
+  const [isInMaintenanceMode, setIsInMaintenanceMode] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
   useEffect(() => {
-    console.log('Current Maintenance Status:', MAINTENANCE_MODE)
+    // Check maintenance mode on mount and every 30 seconds
+    const checkMaintenanceMode = () => {
+      const maintenanceMode = window.localStorage.getItem('MAINTENANCE_MODE') === 'true' ||
+                             process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true'
+      setIsInMaintenanceMode(maintenanceMode)
+      setIsLoading(false)
+    }
+
+    checkMaintenanceMode()
+    const interval = setInterval(checkMaintenanceMode, 30000)
+
+    return () => clearInterval(interval)
   }, [])
 
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="h-16 w-16 animate-spin rounded-full border-4 border-gray-300 border-t-pink-500" />
+      </div>
+    )
+  }
+
   return (
-    <MaintenanceContext.Provider value={{ isInMaintenanceMode: MAINTENANCE_MODE }}>
-      {MAINTENANCE_MODE ? (
+    <MaintenanceContext.Provider value={{ isInMaintenanceMode }}>
+      {isInMaintenanceMode ? (
         <MaintenancePage />
       ) : (
         children
