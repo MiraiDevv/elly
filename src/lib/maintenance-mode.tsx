@@ -7,7 +7,7 @@ interface MaintenanceContextType {
   isInMaintenanceMode: boolean
 }
 
-// This will be replaced at build time
+// Simple maintenance mode check
 const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true'
 
 const MaintenanceContext = createContext<MaintenanceContextType>({ isInMaintenanceMode: MAINTENANCE_MODE })
