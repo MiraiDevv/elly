@@ -36,5 +36,5 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          echo "NEXT_PUBLIC_MAINTENANCE_MODE=${{ github.event.inputs.maintenance_mode }}" >> .vercel/.env.production
+          mkdir -p .vercel
           npx vercel deploy --prod --token=$VERCEL_TOKEN --scope=$VERCEL_ORG_ID --yes --env NEXT_PUBLIC_MAINTENANCE_MODE=${{ github.event.inputs.maintenance_mode }} 
