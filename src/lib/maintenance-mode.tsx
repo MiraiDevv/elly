@@ -2,15 +2,18 @@
 
 import { createContext, useContext, useEffect } from 'react'
 import Image from 'next/image'
+import getConfig from 'next/config'
 
 interface MaintenanceContextType {
   isInMaintenanceMode: boolean
 }
 
-// Simple maintenance mode check with debug logging
-const MAINTENANCE_MODE = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true'
+// Get runtime config
+const { publicRuntimeConfig } = getConfig() || {}
+const MAINTENANCE_MODE = publicRuntimeConfig?.MAINTENANCE_MODE === 'true'
+
 if (typeof window !== 'undefined') {
-  console.log('Maintenance Mode Value:', process.env.NEXT_PUBLIC_MAINTENANCE_MODE)
+  console.log('Runtime Config:', publicRuntimeConfig)
   console.log('Is in Maintenance Mode?', MAINTENANCE_MODE)
 }
 
