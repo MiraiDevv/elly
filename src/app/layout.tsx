@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Analytics } from '@vercel/analytics/react'
 import { Metadata } from 'next'
 import { MaintenanceProvider } from '@/lib/maintenance-mode'
+import { ExitDialog } from '@/components/ui/ExitDialog'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               {/* Footer */}
               <Footer />
             </div>
+            <ExitDialog />
           </MaintenanceProvider>
           <Analytics />
         </ThemeProvider>
