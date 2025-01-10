@@ -1,9 +1,43 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 const CustomerCarousel: React.FC = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isScrolling, setIsScrolling] = React.useState(false);
+
+  useEffect(() => {
+    const handleAutoScroll = () => {
+      if (window.innerWidth < 768 && scrollRef.current && !isScrolling) {
+        const container = scrollRef.current;
+        const scrollAmount = 1; // Pixels to scroll per frame
+        let position = 0;
+
+        const scroll = () => {
+          position += scrollAmount;
+          container.scrollLeft = position;
+
+          // Reset when reaching the end
+          if (position >= container.scrollWidth - container.clientWidth) {
+            position = 0;
+            container.scrollLeft = 0;
+          }
+
+          if (!isScrolling) {
+            requestAnimationFrame(scroll);
+          }
+        };
+
+        requestAnimationFrame(scroll);
+      }
+    };
+
+    handleAutoScroll();
+
+    return () => setIsScrolling(true);
+  }, [isScrolling]);
+
   const clients = [
     { 
       name: 'Otsuka', 
@@ -40,34 +74,42 @@ const CustomerCarousel: React.FC = () => {
         </h2>
         <div className="max-w-4xl mx-auto px-4">
           <p className="text-base sm:text-lg md:text-xl text-[#2D3748] dark:text-gray-300 text-center mb-8 sm:mb-16 max-w-4xl mx-auto px-4">
-          Você terá acesso a todo material que uso para editar para os melhores canais de valorant</p>
+            Você terá acesso a todo material que uso para editar para os melhores canais de valorant
+          </p>
           
-          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto">
-            {clients.map((client, index) => (
-              <a 
-                key={index} 
-                href={client.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative transition-transform hover:scale-105 duration-300 
-                flex-[1_1_calc(50%-1rem)] sm:flex-[1_1_calc(33.333%-1rem)] lg:flex-[0_1_auto] 
-                flex flex-col items-center"
-              >
-                <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#F56565]/20 group-hover:border-[#F56565] transition-colors duration-300">
-                  <Image
-                    src={client.image}
-                    alt={client.name}
-                    width={96}
-                    height={96}
-                    className="object-cover w-full h-full"
-                    unoptimized
-                  />
-                </div>
-                <p className="text-[#2D3748] dark:text-gray-300 text-center mt-2 text-xs sm:text-sm group-hover:text-[#F56565] transition-colors duration-300">
-                  {client.name}
-                </p>
-              </a>
-            ))}
+          <div className="relative w-full overflow-hidden">
+            <div 
+              ref={scrollRef}
+              className="flex gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-hide md:flex-wrap md:justify-center"
+              onMouseEnter={() => setIsScrolling(true)}
+              onMouseLeave={() => setIsScrolling(false)}
+            >
+              {clients.map((client, index) => (
+                <a 
+                  key={index} 
+                  href={client.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative transition-transform hover:scale-105 duration-300 
+                  flex-none md:flex-[0_1_auto]
+                  flex flex-col items-center"
+                >
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#F56565]/20 group-hover:border-[#F56565] transition-colors duration-300">
+                    <Image
+                      src={client.image}
+                      alt={client.name}
+                      width={96}
+                      height={96}
+                      className="object-cover w-full h-full"
+                      unoptimized
+                    />
+                  </div>
+                  <p className="text-[#2D3748] dark:text-gray-300 text-center mt-2 text-xs sm:text-sm group-hover:text-[#F56565] transition-colors duration-300">
+                    {client.name}
+                  </p>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
