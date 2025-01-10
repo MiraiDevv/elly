@@ -14,8 +14,8 @@ const PackIncludes: React.FC = () => {
       description: 'Tutorial exclusivo ensinando como editar seu primeiro vídeo'
     },
     {
-      title: 'Suporte Exclusivo',
-      description: 'Acesso ao nosso grupo de suporte para tirar suas dúvidas'
+      title: 'Comunidade Exclusiva',
+      description: 'Participe de um grupo único onde você pode trocar ideias, receber ajuda de outros editores, divulgar seu trabalho e criar conexões com amigos apaixonados por edição.'
     },
     {
       title: 'Atualizações',
