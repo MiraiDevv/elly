@@ -23,7 +23,7 @@ const PackAccess: React.FC = () => {
               
               {/* Price badge */}
               <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-[#F56565] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full transform rotate-12 shadow-lg">
-                <span className="text-xs sm:text-sm font-semibold line-through opacity-75">R$197</span>
+                <span className="text-xs sm:text-sm font-semibold line-through opacity-75">R$97</span>
                 <span className="text-lg sm:text-xl font-bold ml-2">R$50</span>
               </div>
             </div>

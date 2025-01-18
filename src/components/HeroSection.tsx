@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import HeroVideoPlayer from './ui/HeroVideoPlayer';
 
 interface HeroSectionProps {
   title: string;
@@ -42,7 +41,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
         <div className="w-full md:w-1/2 px-2 md:px-0">
           <div className="aspect-video w-full rounded-lg overflow-hidden shadow-xl">
-            <HeroVideoPlayer videoId="85yju1va4J8" />
+            <video
+              src="/assets/videos/EllyPack.mp4"
+              className="w-full h-full object-cover"
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
           </div>
         </div>
       </div>
