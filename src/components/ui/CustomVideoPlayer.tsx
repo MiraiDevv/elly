@@ -73,44 +73,6 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
     }
   };
 
-  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    if (!videoRef.current) return;
-    
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const percentage = (x / rect.width);
-    const newTime = percentage * videoRef.current.duration;
-    videoRef.current.currentTime = Math.max(0, Math.min(newTime, videoRef.current.duration));
-  };
-
-  const handleProgressMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    
-    const progressBar = e.currentTarget;
-    
-    const handleMouseMove = (e: MouseEvent) => {
-      const bounds = progressBar.getBoundingClientRect();
-      const x = Math.max(0, Math.min(e.clientX - bounds.left, bounds.width));
-      const percentage = x / bounds.width;
-      if (videoRef.current) {
-        const newTime = percentage * videoRef.current.duration;
-        videoRef.current.currentTime = Math.max(0, Math.min(newTime, videoRef.current.duration));
-      }
-    };
-
-    const handleMouseUp = () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-  };
-
   const toggleFullscreen = async () => {
     if (!containerRef.current) return;
 
