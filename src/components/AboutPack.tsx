@@ -11,7 +11,7 @@ const AboutPack: React.FC = () => {
           <div className="w-full md:w-1/2">
             <div className="relative w-full aspect-[4/3] rounded-lg shadow-2xl overflow-hidden">
               <Image
-                src="/assets/mockup/ellypack_mockup.png"
+                src="/assets/mockup/ellypack_mockup(1).png"
                 alt="Pack Preview"
                 fill
                 className="object-cover"

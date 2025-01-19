@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import VideoWrapper from './ui/VideoWrapper';
 
 const PackIncludes: React.FC = () => {
   const items = [
@@ -47,14 +48,9 @@ const PackIncludes: React.FC = () => {
             Veja o Pack em Ação
           </h3>
           <div className="aspect-video w-full rounded-lg overflow-hidden shadow-xl">
-            <video
+            <VideoWrapper
               src="/assets/videos/EllyPack.mp4"
-              className="w-full h-full object-cover"
-              controls
-              autoPlay
-              muted
-              loop
-              playsInline
+              className="w-full h-full"
             />
           </div>
         </div>
