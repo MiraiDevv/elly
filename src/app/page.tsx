@@ -24,7 +24,7 @@ export default function Home() {
         items={[
           {
             question: "O que está incluso no pack?",
-            answer: "O pack inclui 8GB de arquivos de alta qualidade, uma aula em vídeo exclusiva ensinando como editar seu primeiro vídeo, acesso à comunidade exclusiva e atualizações gratuitas."
+            answer: "O pack inclui 15GB de arquivos de alta qualidade, uma aula em vídeo exclusiva ensinando como editar seu primeiro vídeo, acesso à comunidade exclusiva e atualizações gratuitas."
           },
           {
             question: "Como recebo o acesso após a compra?",

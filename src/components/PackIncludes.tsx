@@ -6,7 +6,7 @@ import VideoWrapper from './ui/VideoWrapper';
 const PackIncludes: React.FC = () => {
   const items = [
     {
-      title: '8GB de Arquivos',
+      title: '15GB de Arquivos',
       description: 'Arquivos de alta qualidade prontos para usar em seus projetos'
     },
     {

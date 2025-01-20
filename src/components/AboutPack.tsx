@@ -9,7 +9,7 @@ const AboutPack: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
           <div className="w-full md:w-1/2">
-            <div className="relative w-full aspect-[4/3] rounded-lg shadow-2xl overflow-hidden">
+            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden">
               <Image
                 src="/assets/mockup/ellypack_mockup(1).png"
                 alt="Pack Preview"
@@ -25,7 +25,7 @@ const AboutPack: React.FC = () => {
               <span className="text-[#F56565]">O PACK</span>
             </h2>
             <p className="text-base sm:text-lg text-[#2D3748] dark:text-gray-300 leading-relaxed">
-              Se você quer otimizar seu tempo e criar vídeos de qualidade de forma rápida e fácil, nosso Pack de Edição é a solução perfeita. Com 8GB de arquivos de alta qualidade e uma aula em vídeo exclusiva, você aprenderá a editar seu primeiro vídeo de forma simples e eficiente, sem complicações. Economize horas no processo de edição e foque no que realmente importa: criatividade e resultado final.
+              Se você quer otimizar seu tempo e criar vídeos de qualidade de forma rápida e fácil, nosso Pack de Edição é a solução perfeita. Com 15GB de arquivos de alta qualidade e uma aula em vídeo exclusiva, você aprenderá a editar seu primeiro vídeo de forma simples e eficiente, sem complicações. Economize horas no processo de edição e foque no que realmente importa: criatividade e resultado final.
             </p>
           </div>
         </div>

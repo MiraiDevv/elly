@@ -20,7 +20,29 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
   const [volume, setVolume] = useState(1);
   const [previousVolume, setPreviousVolume] = useState(1);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const controlsTimeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+        if (!entry.isIntersecting && isPlaying) {
+          videoRef.current?.pause();
+          setIsPlaying(false);
+        }
+      },
+      {
+        threshold: 0.8 // Controls only work when 80% of the player is visible
+      }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isPlaying]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -63,6 +85,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
   };
 
   const togglePlay = () => {
+    if (!isVisible) return;
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
@@ -74,7 +97,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
   };
 
   const toggleFullscreen = async () => {
-    if (!containerRef.current) return;
+    if (!isVisible || !containerRef.current) return;
 
     try {
       if (!document.fullscreenElement) {
@@ -88,6 +111,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
   };
 
   const handleMouseMove = () => {
+    if (!isVisible) return;
     setShowControls(true);
     if (controlsTimeoutRef.current) {
       clearTimeout(controlsTimeoutRef.current);
@@ -100,6 +124,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
   };
 
   const toggleMute = () => {
+    if (!isVisible) return;
     if (volume > 0) {
       setPreviousVolume(volume);
       setVolume(0);
@@ -109,6 +134,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
   };
 
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isVisible) return;
     const newVolume = parseFloat(e.target.value);
     setVolume(newVolume);
     setPreviousVolume(newVolume);
@@ -123,7 +149,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
   return (
     <div 
       ref={containerRef}
-      className={`relative group ${className}`}
+      className={`relative group ${className} ${!isVisible ? 'pointer-events-none' : ''}`}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setShowControls(true)}
     >
@@ -135,8 +161,9 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
         onClick={togglePlay}
       >
         <button 
-          className="w-16 h-16 flex items-center justify-center rounded-full bg-[#F56565] text-white
-            transform transition-transform hover:scale-110 active:scale-95"
+          className={`w-16 h-16 flex items-center justify-center rounded-full bg-[#F56565] text-white
+            transform transition-transform hover:scale-110 active:scale-95 ${!isVisible ? 'opacity-0' : ''}`}
+          disabled={!isVisible}
         >
           {isPlaying ? (
             <Pause className="w-8 h-8" />
@@ -159,7 +186,9 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
       {/* Controls overlay */}
       <div 
         className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent
-          px-4 py-3 transition-opacity duration-300 ${showControls ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+          px-4 py-3 transition-all duration-300 ${
+            showControls && isVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         onMouseEnter={() => setShowControls(true)}
         onMouseLeave={() => {
           if (isPlaying) {
@@ -174,6 +203,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
           <div 
             className="relative h-2 bg-white/30 rounded-full cursor-pointer"
             onClick={(e) => {
+              if (!isVisible) return;
               e.preventDefault();
               e.stopPropagation();
               const bounds = e.currentTarget.getBoundingClientRect();
@@ -184,6 +214,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
               }
             }}
             onMouseDown={(e) => {
+              if (!isVisible) return;
               e.preventDefault();
               e.stopPropagation();
               const bar = e.currentTarget;
@@ -227,6 +258,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
             <button 
               onClick={togglePlay}
               className="text-white hover:text-[#F56565] transition-colors p-2 cursor-pointer"
+              disabled={!isVisible}
             >
               {isPlaying ? (
                 <Pause className="w-6 h-6" />
@@ -236,17 +268,19 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
             </button>
             <div 
               className="relative group z-50"
-              onMouseEnter={() => setShowVolumeSlider(true)}
+              onMouseEnter={() => isVisible && setShowVolumeSlider(true)}
               onMouseLeave={() => setShowVolumeSlider(false)}
             >
               <button
                 type="button"
                 onClick={(e) => {
+                  if (!isVisible) return;
                   e.preventDefault();
                   e.stopPropagation();
                   toggleMute();
                 }}
                 className="text-white hover:text-[#F56565] transition-colors p-2 cursor-pointer"
+                disabled={!isVisible}
               >
                 {getVolumeIcon()}
               </button>
@@ -264,6 +298,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
                   max="1"
                   step="0.01"
                   value={volume}
+                  disabled={!isVisible}
                   onClick={(e) => e.stopPropagation()}
                   onChange={(e) => {
                     e.preventDefault();
@@ -286,10 +321,12 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
           <button 
             type="button"
             onClick={(e) => {
+              if (!isVisible) return;
               e.stopPropagation();
               toggleFullscreen();
             }}
             className="text-white hover:text-[#F56565] transition-colors p-2 cursor-pointer z-50"
+            disabled={!isVisible}
           >
             {isFullscreen ? (
               <Minimize className="w-6 h-6" />
