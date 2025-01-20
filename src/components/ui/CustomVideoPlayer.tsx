@@ -161,14 +161,14 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
         onClick={togglePlay}
       >
         <button 
-          className={`w-16 h-16 flex items-center justify-center rounded-full bg-[#F56565] text-white
-            transform transition-transform hover:scale-110 active:scale-95 ${!isVisible ? 'opacity-0' : ''}`}
+          className={`w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center rounded-full bg-[#F56565]/90 text-white
+            backdrop-blur-sm transform transition-transform hover:scale-110 active:scale-95 ${!isVisible ? 'opacity-0' : ''}`}
           disabled={!isVisible}
         >
           {isPlaying ? (
-            <Pause className="w-8 h-8" />
+            <Pause className="w-6 h-6 sm:w-8 sm:h-8" />
           ) : (
-            <Play className="w-8 h-8 ml-1" />
+            <Play className="w-6 h-6 sm:w-8 sm:h-8 ml-1" />
           )}
         </button>
       </div>
@@ -176,7 +176,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
       {/* Video element */}
       <video
         ref={videoRef}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover bg-black"
         onClick={togglePlay}
         playsInline
       >
@@ -185,8 +185,8 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
 
       {/* Controls overlay */}
       <div 
-        className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent
-          px-4 py-3 transition-all duration-300 ${
+        className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent
+          px-3 sm:px-4 py-2 sm:py-3 transition-all duration-300 ${
             showControls && isVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
         onMouseEnter={() => setShowControls(true)}
@@ -199,9 +199,9 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
         }}
       >
         {/* Progress bar */}
-        <div className="group/progress mb-3 relative z-20">
+        <div className="group/progress mb-2 sm:mb-3 relative z-20">
           <div 
-            className="relative h-2 bg-white/30 rounded-full cursor-pointer"
+            className="relative h-1 sm:h-2 bg-white/30 rounded-full cursor-pointer touch-none"
             onClick={(e) => {
               if (!isVisible) return;
               e.preventDefault();
@@ -246,24 +246,24 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
               style={{ width: `${progress}%` }}
             />
             <div 
-              className="absolute top-1/2 -translate-y-1/2 h-4 w-4 bg-[#F56565] rounded-full shadow-lg opacity-0 group-hover/progress:opacity-100 transition-opacity"
+              className="absolute top-1/2 -translate-y-1/2 h-3 w-3 sm:h-4 sm:w-4 bg-[#F56565] rounded-full shadow-lg opacity-0 group-hover/progress:opacity-100 transition-opacity"
               style={{ left: `${progress}%`, transform: `translate(-50%, -50%)` }}
             />
           </div>
         </div>
 
         {/* Bottom controls */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button 
               onClick={togglePlay}
-              className="text-white hover:text-[#F56565] transition-colors p-2 cursor-pointer"
+              className="text-white hover:text-[#F56565] transition-colors p-1.5 sm:p-2 cursor-pointer"
               disabled={!isVisible}
             >
               {isPlaying ? (
-                <Pause className="w-6 h-6" />
+                <Pause className="w-5 h-5 sm:w-6 sm:h-6" />
               ) : (
-                <Play className="w-6 h-6" />
+                <Play className="w-5 h-5 sm:w-6 sm:h-6" />
               )}
             </button>
             <div 
@@ -279,13 +279,13 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
                   e.stopPropagation();
                   toggleMute();
                 }}
-                className="text-white hover:text-[#F56565] transition-colors p-2 cursor-pointer"
+                className="text-white hover:text-[#F56565] transition-colors p-1.5 sm:p-2 cursor-pointer"
                 disabled={!isVisible}
               >
                 {getVolumeIcon()}
               </button>
               <div 
-                className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-2 bg-black/90 rounded-lg transition-all duration-200
+                className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 p-2 bg-black/90 rounded-lg transition-all duration-200 backdrop-blur-sm
                   ${showVolumeSlider ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-1'}`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -305,7 +305,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
                     e.stopPropagation();
                     handleVolumeChange(e);
                   }}
-                  className="w-24 h-1 appearance-none bg-white/30 rounded-full cursor-pointer
+                  className="w-20 sm:w-24 h-1 appearance-none bg-white/30 rounded-full cursor-pointer
                     [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3
                     [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#F56565]
                     [&::-moz-range-thumb]:w-3 [&::-moz-range-thumb]:h-3 [&::-moz-range-thumb]:rounded-full
@@ -313,7 +313,7 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
                 />
               </div>
             </div>
-            <span className="text-white text-sm">
+            <span className="text-white text-xs sm:text-sm">
               {formatTime(currentTime)} / {formatTime(duration)}
             </span>
           </div>
@@ -325,13 +325,13 @@ const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ src, className = 
               e.stopPropagation();
               toggleFullscreen();
             }}
-            className="text-white hover:text-[#F56565] transition-colors p-2 cursor-pointer z-50"
+            className="text-white hover:text-[#F56565] transition-colors p-1.5 sm:p-2 cursor-pointer z-50"
             disabled={!isVisible}
           >
             {isFullscreen ? (
-              <Minimize className="w-6 h-6" />
+              <Minimize className="w-5 h-5 sm:w-6 sm:h-6" />
             ) : (
-              <Maximize className="w-6 h-6" />
+              <Maximize className="w-5 h-5 sm:w-6 sm:h-6" />
             )}
           </button>
         </div>
