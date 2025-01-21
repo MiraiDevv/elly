@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import VideoWrapper from './ui/VideoWrapper';
 
 const PackIncludes: React.FC = () => {
   const items = [
@@ -14,8 +13,8 @@ const PackIncludes: React.FC = () => {
       description: 'Tutorial exclusivo ensinando como editar seu primeiro vídeo'
     },
     {
-      title: 'Comunidade Exclusiva',
-      description: 'Participe de um grupo único onde você pode trocar ideias, receber ajuda de outros editores, divulgar seu trabalho e criar conexões com amigos apaixonados por edição.'
+      title: 'Canal Exclusivo',
+      description: 'Participe de uma comunidade no discord com um canal único onde você receber suporte, pode trocar ideias e receber ajuda de outros editores nos canais livres, divulgar seu trabalho e criar conexões com amigos apaixonados por edição.'
     },
     {
       title: 'Atualizações',
@@ -48,9 +47,12 @@ const PackIncludes: React.FC = () => {
             Veja o Pack em Ação
           </h3>
           <div className="aspect-video w-full rounded-lg overflow-hidden shadow-xl">
-            <VideoWrapper
-              src="/assets/videos/EllyPack.mp4"
+            <iframe
+              src="https://www.youtube.com/embed/_ED1ByP25Bg"
+              title="Pack Preview"
               className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             />
           </div>
         </div>

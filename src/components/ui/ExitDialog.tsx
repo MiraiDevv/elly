@@ -2,17 +2,44 @@
 
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 type TabPosition = 'top' | 'bottom' | 'left' | 'right' | null
 
 export function ExitDialog() {
+  const pathname = usePathname()
   const [showDialog, setShowDialog] = useState(false)
   const [tabPosition, setTabPosition] = useState<TabPosition>(null)
   const [lastInteractionTime, setLastInteractionTime] = useState(Date.now())
+  const [isOverYoutube, setIsOverYoutube] = useState(false)
+
+  // Reset states when pathname changes
+  useEffect(() => {
+    setShowDialog(false);
+    setIsOverYoutube(false);
+  }, [pathname]);
 
   useEffect(() => {
+    // Handle YouTube iframe interactions
+    const handleYoutubeInteraction = (e: MouseEvent) => {
+      const target = e.target as Element;
+      const youtubeFrame = target.closest('iframe[src*="youtube.com"]');
+      if (youtubeFrame) {
+        setIsOverYoutube(true);
+        setShowDialog(false);
+      }
+    }
+
+    const handleYoutubeMouseLeave = () => {
+      setIsOverYoutube(false);
+    }
+
     // Desktop: Mouse leave and tab position detection
     const handleMouseLeave = (e: MouseEvent) => {
+      if (isOverYoutube) {
+        return;
+      }
+
       const { clientX, clientY } = e
       const { innerWidth, innerHeight } = window
 
@@ -34,6 +61,10 @@ export function ExitDialog() {
 
     // Mobile: Visibility change detection
     const handleVisibilityChange = () => {
+      if (isOverYoutube) {
+        return;
+      }
+      
       if (document.hidden) {
         setTabPosition('top') // Default to top for mobile
         setShowDialog(true)
@@ -42,6 +73,10 @@ export function ExitDialog() {
 
     // Mobile: Handle back button/switching apps
     const handleBlur = () => {
+      if (isOverYoutube) {
+        return;
+      }
+      
       setTabPosition('top') // Default to top for mobile
       setShowDialog(true)
     }
@@ -53,6 +88,10 @@ export function ExitDialog() {
 
     // Check for inactivity every 30 seconds
     const inactivityInterval = setInterval(() => {
+      if (isOverYoutube) {
+        return;
+      }
+      
       const inactiveTime = Date.now() - lastInteractionTime
       if (inactiveTime > 30000) { // 30 seconds
         setTabPosition('top') // Default to top for inactivity
@@ -61,21 +100,27 @@ export function ExitDialog() {
     }, 30000)
 
     // Add event listeners
+    document.addEventListener('mouseover', handleYoutubeInteraction)
+    document.addEventListener('click', handleYoutubeInteraction)
     document.addEventListener('mouseleave', handleMouseLeave)
+    document.addEventListener('mouseleave', handleYoutubeMouseLeave)
     document.addEventListener('visibilitychange', handleVisibilityChange)
     window.addEventListener('blur', handleBlur)
     document.addEventListener('touchstart', handleUserActivity)
     document.addEventListener('scroll', handleUserActivity)
 
     return () => {
+      document.removeEventListener('mouseover', handleYoutubeInteraction)
+      document.removeEventListener('click', handleYoutubeInteraction)
       document.removeEventListener('mouseleave', handleMouseLeave)
+      document.removeEventListener('mouseleave', handleYoutubeMouseLeave)
       document.removeEventListener('visibilitychange', handleVisibilityChange)
       window.removeEventListener('blur', handleBlur)
       document.removeEventListener('touchstart', handleUserActivity)
       document.removeEventListener('scroll', handleUserActivity)
       clearInterval(inactivityInterval)
     }
-  }, [lastInteractionTime])
+  }, [lastInteractionTime, isOverYoutube])
 
   if (!showDialog) return null
 
@@ -127,7 +172,7 @@ export function ExitDialog() {
           {/* Desktop Image */}
           <div className="hidden md:flex justify-center py-4">
             <Image
-              src="/assets/icon_home/elly.png"
+              src="/assets/Exit_Dialog_Img/Elly_Triste.png"
               alt="Elly"
               width={150}
               height={150}

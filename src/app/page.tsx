@@ -24,11 +24,11 @@ export default function Home() {
         items={[
           {
             question: "O que está incluso no pack?",
-            answer: "O pack inclui 15GB de arquivos de alta qualidade, uma aula em vídeo exclusiva ensinando como editar seu primeiro vídeo, acesso à comunidade exclusiva e atualizações gratuitas."
+            answer: "O pack inclui 15GB de arquivos de alta qualidade, uma aula em vídeo exclusiva ensinando como editar seu primeiro vídeo, acesso à comunidade."
           },
           {
             question: "Como recebo o acesso após a compra?",
-            answer: "Após a confirmação do pagamento, você receberá um email com todas as instruções de acesso ao pack e à comunidade exclusiva."
+            answer: "Após a confirmação do pagamento, você receberá um email com todas as instruções de acesso ao pack e à comunidade."
           },
           {
             question: "O acesso é vitalício?",
@@ -41,6 +41,10 @@ export default function Home() {
           {
             question: "Posso usar o pack em projetos comerciais?",
             answer: "Sim! Todos os arquivos incluídos no pack possuem licença comercial, permitindo seu uso em projetos pessoais e comerciais."
+          },
+          {
+            question: "Como acesso o canal exclusivo?",
+            answer: "Após a compra, envie o comprovante de pagamento para o robo_da_akame no Discord. Ele irá adicionar o cargo exclusivo que dará acesso ao canal privado da comunidade."
           }
         ]}
       />

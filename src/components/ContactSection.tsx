@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { X, Mail, MessageCircle, Globe, ArrowUpRight, Sparkles } from 'lucide-react';
+import { X, Mail, MessageCircle, ArrowUpRight, Sparkles } from 'lucide-react';
 
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
@@ -53,7 +53,7 @@ const ContactSection: React.FC = () => {
     Twitter: 'https://twitter.com/ellyvfx',
     Instagram: 'https://instagram.com/ellyminada',
     Email: 'mailto:ellypackcontato@gmail.com',
-    Discord: '#'
+    Discord: 'https://discord.gg/bcbeCFKHJm'
   };
 
   return (
@@ -65,10 +65,6 @@ const ContactSection: React.FC = () => {
       <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="max-w-4xl mx-auto text-center mb-16 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F56565]/10 dark:bg-[#F56565]/20 mb-6">
-            <Sparkles className="w-5 h-5 text-[#F56565]" />
-            <span className="text-[#F56565] font-medium">24/7 Suporte</span>
-          </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-[#F56565] animate-fade-in-up">Vamos</span>{' '}
             <span className="text-[#6B46C1] animate-fade-in-up animation-delay-200">Conectar</span>
@@ -107,29 +103,6 @@ const ContactSection: React.FC = () => {
               </p>
             </a>
           ))}
-        </div>
-
-        {/* Additional Info */}
-        <div className="max-w-4xl mx-auto mt-16 text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#F56565]/10 to-[#6B46C1]/10 dark:from-[#F56565]/20 dark:to-[#6B46C1]/20 border border-[#6B46C1]/20 dark:border-transparent backdrop-blur-sm animate-fade-in-up">
-            <Globe className="w-5 h-5 text-[#F56565]" />
-            <span className="text-[#2D3748] dark:text-gray-300 font-medium">Disponível para projetos globais</span>
-          </div>
-          
-          <div className="mt-8 p-8 bg-white dark:bg-[#1A202C] rounded-3xl shadow-lg border border-[#6B46C1]/20 dark:border-transparent transform hover:scale-[1.02] transition-all duration-300 animate-fade-in-up animation-delay-500">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#F56565] to-[#6B46C1] rounded-3xl blur opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
-            <h3 className="text-2xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-[#F56565] to-[#6B46C1] text-transparent bg-clip-text">
-                Horário de Atendimento
-              </span>
-            </h3>
-            <p className="text-[#2D3748] dark:text-gray-300 text-lg">
-              Segunda a Sexta • 9:00 - 18:00 (Horário de Brasília)
-            </p>
-            <p className="text-[#2D3748]/60 dark:text-gray-400 mt-2">
-              Responderemos sua mensagem o mais breve possível!
-            </p>
-          </div>
         </div>
       </div>
     </div>

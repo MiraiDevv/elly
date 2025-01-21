@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Sparkles } from 'lucide-react';
+import Image from 'next/image';
 
 const PackAccess: React.FC = () => {
   return (
@@ -16,8 +17,14 @@ const PackAccess: React.FC = () => {
           {/* Left side - Placeholder Image */}
           <div className="w-full md:w-1/2">
             <div className="relative">
-              {/* Placeholder with gradient */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-50 to-gray-100 dark:from-[#1E293B] dark:to-[#0F172A] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/assets/icon_pack_access/pack_access.jpeg"
+                  alt="Pack Access Preview"
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#6B46C1]/20 to-[#F56565]/20"></div>
               </div>
               
@@ -38,7 +45,7 @@ const PackAccess: React.FC = () => {
             </div>
 
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D3748] dark:text-white mb-4 sm:mb-6">
-              Economize tempo e dinheiro com nosso pack completo!
+              Economize tempo com nosso pack completo!
             </h3>
 
             <ul className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
@@ -57,7 +64,7 @@ const PackAccess: React.FC = () => {
             </ul>
 
             <a
-              href="https://pay.kiwify.com.br/7r2BTsF"
+              href="https://pay.kiwify.com.br/jTsypd2"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center w-full"
