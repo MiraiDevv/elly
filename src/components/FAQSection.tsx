@@ -63,7 +63,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({
         {/* CTA Button */}
         <div className="text-center mt-12">
           <a
-            href="https://pay.kiwify.com.br/7r2BTsF"
+            href="https://pay.kiwify.com.br/jTsypd2"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-8 py-3 bg-[#F56565] text-white rounded-full text-lg font-medium hover:bg-[#E53E3E] transition-colors duration-300"
