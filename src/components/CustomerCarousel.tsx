@@ -1,39 +1,47 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import ModernSwiper from './ui/ModernSwiper';
 
+interface Client {
+  name: string;
+  youtube: string;
+  handle: string;
+  image?: string;
+}
+
+const initialClients: Client[] = [
+  { name: 'Otsuka', handle: 'OtsukaXD', youtube: 'https://www.youtube.com/@OtsukaXD' },
+  { name: 'F0rsaken', handle: 'f0rsaken', youtube: 'https://www.youtube.com/@f0rsaken' },
+  { name: 'Nuuhfps', handle: 'Nuuhfps', youtube: 'https://www.youtube.com/@Nuuhfps' },
+  { name: 'AAABW', handle: 'aaabw_', youtube: 'https://www.youtube.com/@aaabw_' },
+  { name: 'Brunowski', handle: 'ibrunowskivalorant', youtube: 'https://www.youtube.com/@ibrunowskivalorant' }
+];
+
 const CustomerCarousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [clients, setClients] = useState<Client[]>(initialClients);
 
-  const clients = [
-    { 
-      name: 'Otsuka', 
-      image: 'https://yt3.googleusercontent.com/8t7GypfzGmty8Ba7negVgvOw5rwzbX_V-M77P0uA1KtWUolLs9dxvWwwawnwKMKUJ0jE7W85_w=s160-c-k-c0x00ffffff-no-rj',
-      youtube: 'https://www.youtube.com/@OtsukaXD'
-    },
-    { 
-      name: 'F0rsaken', 
-      image: 'https://yt3.googleusercontent.com/mNfy7C3vVHVz0qNg8tPPKW0t-bgg9fekgZJJ30pguXFNPiI-XsKlFkcyuHdtuhjT78QE9RKMLw=s160-c-k-c0x00ffffff-no-rj',
-      youtube: 'https://www.youtube.com/@f0rsaken'
-    },
-    { 
-      name: 'Nuuhfps', 
-      image: 'https://yt3.googleusercontent.com/aKL9nfpDBHtQSgrrFU3wSvdE9S_kpQgsOc61UeI8hE1wIJdIlG4jrCGfd2_L5-lHdca_A4EH=s160-c-k-c0x00ffffff-no-rj',
-      youtube: 'https://www.youtube.com/@Nuuhfps'
-    },
-    { 
-      name: 'AAABW', 
-      image: 'https://yt3.googleusercontent.com/8ht01uS6QsZNoyw9Yd3oTSzosaCzw8igPSEoTYsWrm62K4xdn6ZuCQFwuILbTUEQfM8tqqahI1E=s160-c-k-c0x00ffffff-no-rj',
-      youtube: 'https://www.youtube.com/@aaabw_'
-    },
-    { 
-      name: 'Brunowski', 
-      image: 'https://yt3.googleusercontent.com/DN4qXrDa74eJP--U1q1Pg-bOAt22TfLeFGMTzvrHmDJyqy3j06xOEPwGRsOaeJP3sXK6Uqcw8w=s160-c-k-c0x00ffffff-no-rj',
-      youtube: 'https://www.youtube.com/@ibrunowskivalorant'
-    }
-  ];
+  useEffect(() => {
+    const fetchThumbnails = async () => {
+      const updatedClients = await Promise.all(
+        clients.map(async (client: Client) => {
+          try {
+            const res = await fetch(`/api/getChannelThumbnail?handle=${client.handle}`);
+            if (!res.ok) throw new Error('Failed to fetch thumbnail');
+            const data = await res.json();
+            return { ...client, image: data.thumbnailUrl };
+          } catch (error) {
+            console.error('Error fetching thumbnail for', client.handle, error);
+            return client;
+          }
+        })
+      );
+      setClients(updatedClients);
+    };
+    fetchThumbnails();
+  }, []);
 
   const handleSlideChange = (index: number) => {
     setActiveIndex(index % 6);
@@ -73,7 +81,7 @@ const CustomerCarousel: React.FC = () => {
                     <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-[#F56565]/20">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#F56565] to-[#9333EA] opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                       <Image
-                        src={client.image}
+                        src={client.image || 'https://via.placeholder.com/128'}
                         alt={client.name}
                         width={128}
                         height={128}
