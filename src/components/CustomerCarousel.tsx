@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import ModernSwiper from './ui/ModernSwiper';
 
@@ -12,36 +12,16 @@ interface Client {
 }
 
 const initialClients: Client[] = [
-  { name: 'Otsuka', handle: 'OtsukaXD', youtube: 'https://www.youtube.com/@OtsukaXD' },
-  { name: 'F0rsaken', handle: 'f0rsaken', youtube: 'https://www.youtube.com/@f0rsaken' },
-  { name: 'Nuuhfps', handle: 'Nuuhfps', youtube: 'https://www.youtube.com/@Nuuhfps' },
-  { name: 'AAABW', handle: 'aaabw_', youtube: 'https://www.youtube.com/@aaabw_' },
-  { name: 'Brunowski', handle: 'ibrunowskivalorant', youtube: 'https://www.youtube.com/@ibrunowskivalorant' }
+  { name: 'Otsuka', handle: 'OtsukaXD', youtube: 'https://www.youtube.com/@OtsukaXD', image: 'https://yt3.googleusercontent.com/pVSBe8OTUYhAX7fXWbww5lE8Dftu2v1KTl-eLgOsQY6tvs21w1YVby7VWYtnS-pUoDdBUpUn=s160-c-k-c0x00ffffff-no-rj' },
+  { name: 'F0rsaken', handle: 'f0rsaken', youtube: 'https://www.youtube.com/@f0rsaken', image: 'https://yt3.googleusercontent.com/mNfy7C3vVHVz0qNg8tPPKW0t-bgg9fekgZJJ30pguXFNPiI-XsKlFkcyuHdtuhjT78QE9RKMLw=s160-c-k-c0x00ffffff-no-rj' },
+  { name: 'Nuuhfps', handle: 'Nuuhfps', youtube: 'https://www.youtube.com/@Nuuhfps', image: 'https://yt3.googleusercontent.com/aKL9nfpDBHtQSgrrFU3wSvdE9S_kpQgsOc61UeI8hE1wIJdIlG4jrCGfd2_L5-lHdca_A4EH=s160-c-k-c0x00ffffff-no-rj' },
+  { name: 'AAABW', handle: 'aaabw_', youtube: 'https://www.youtube.com/@aaabw_', image: 'https://yt3.googleusercontent.com/8ht01uS6QsZNoyw9Yd3oTSzosaCzw8igPSEoTYsWrm62K4xdn6ZuCQFwuILbTUEQfM8tqqahI1E=s160-c-k-c0x00ffffff-no-rj' },
+  { name: 'Brunowski', handle: 'ibrunowskivalorant', youtube: 'https://www.youtube.com/@ibrunowskivalorant', image: 'https://yt3.googleusercontent.com/s-EmiouV21Bz7F3jB989-1fxu0uxIKhv5Naszrlj6tkuUX2PrVyJeDioKYaz47lhUnNVWWiOUw=s160-c-k-c0x00ffffff-no-rj' }
 ];
 
 const CustomerCarousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [clients, setClients] = useState<Client[]>(initialClients);
-
-  useEffect(() => {
-    const fetchThumbnails = async () => {
-      const updatedClients = await Promise.all(
-        clients.map(async (client: Client) => {
-          try {
-            const res = await fetch(`/api/getChannelThumbnail?handle=${client.handle}`);
-            if (!res.ok) throw new Error('Failed to fetch thumbnail');
-            const data = await res.json();
-            return { ...client, image: data.thumbnailUrl };
-          } catch (error) {
-            console.error('Error fetching thumbnail for', client.handle, error);
-            return client;
-          }
-        })
-      );
-      setClients(updatedClients);
-    };
-    fetchThumbnails();
-  }, []);
+  const [clients] = useState<Client[]>(initialClients);
 
   const handleSlideChange = (index: number) => {
     setActiveIndex(index % 6);
@@ -87,6 +67,7 @@ const CustomerCarousel: React.FC = () => {
                         height={128}
                         className="object-cover w-full h-full transform transition-transform duration-500 group-hover:scale-110"
                         unoptimized
+                        onError={(e) => { e.currentTarget.src = client.name === 'F0rsaken' ? '/images/f0rsaken.png' : 'https://via.placeholder.com/128'; }}
                       />
                     </div>
                     <p className="mt-4 text-sm sm:text-base font-medium bg-gradient-to-r from-[#F56565] to-[#9333EA] bg-clip-text text-transparent opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
